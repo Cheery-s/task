@@ -1,0 +1,82 @@
+.dashboardHeader {
+    margin-bottom: 24px;
+  }
+  
+  .pageTitle {
+    font-size: 24px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 8px;
+  }
+  
+  .welcomeText {
+    font-size: 16px;
+    color: #6b7280;
+  }
+  
+  .statsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  
+  .statsCard {
+    background-color: white;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .statsIconContainer {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background-color: rgba(37, 99, 235, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+  }
+  
+  .completedIcon {
+    background-color: rgba(34, 197, 94, 0.1);
+  }
+  
+  .upcomingIcon {
+    background-color: rgba(245, 158, 11, 0.1);
+  }
+  
+  .overdueIcon {
+    background-color: rgba(239, 68, 68, 0.1);
+  }
+  
+  .statsIcon {
+    font-size: 20px;
+    color: #2563eb;
+  }
+  
+  .completedIcon .statsIcon {
+    color: #22c55e;
+  }
+  
+  .upcomingIcon .statsIcon {
+    color: #f59e0b;
+  }
+  
+  .overdueIcon .statsIcon {
+    color: #ef4444;
+  }
+  
+  .statsContent {
+    flex: 1;
+  }
+  
+  .statsValue {
+    font-size: 24px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+  }

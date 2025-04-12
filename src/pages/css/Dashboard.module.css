@@ -1,0 +1,271 @@
+/* Dashboard.module.css */
+
+.dashboardContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* Header styles */
+  .dashboardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eaeaea;
+  }
+  
+  .dashboardTitle h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+  }
+  
+  .welcomeText {
+    margin-top: 0.5rem;
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  .logoutButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #f8f9fa;
+    color: #333;
+    border: 1px solid #ddd;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  .logoutButton:hover {
+    background-color: #e9ecef;
+  }
+  
+  .logoutIcon {
+    font-size: 1rem;
+  }
+  
+  /* Stats grid styles */
+  .statsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .statsCard {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .statsCard:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  }
+  
+  .statsIconContainer {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f0f4ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+  }
+  
+  .statsIcon {
+    font-size: 1.2rem;
+    color: #4a6cf7;
+  }
+  
+  .completedIcon {
+    background-color: #e6f7ef;
+  }
+  
+  .completedIcon .statsIcon {
+    color: #10b981;
+  }
+  
+  .upcomingIcon {
+    background-color: #fff4e6;
+  }
+  
+  .upcomingIcon .statsIcon {
+    color: #f59e0b;
+  }
+  
+  .overdueIcon {
+    background-color: #fee2e2;
+  }
+  
+  .overdueIcon .statsIcon {
+    color: #ef4444;
+  }
+  
+  .statsContent {
+    flex: 1;
+  }
+  
+  .statsValue {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    color: #333;
+  }
+  
+  .statsLabel {
+    font-size: 0.875rem;
+    color: #666;
+    margin: 0;
+  }
+  
+  /* Tab styles */
+  .dashboardTabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #eaeaea;
+  }
+  
+  .tabButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    color: #666;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .tabButton:hover {
+    color: #4a6cf7;
+  }
+  
+  .tabButton.active {
+    color: #4a6cf7;
+    border-bottom: 2px solid #4a6cf7;
+    font-weight: 500;
+  }
+  
+  .tabIcon {
+    font-size: 1rem;
+  }
+  
+  /* Content area styles */
+  .dashboardContent {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Tasks container styles */
+  .tasksContainer {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1.5rem;
+  }
+  
+  .taskFormSection {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+  
+  .sectionTitle {
+    font-size: 1.25rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .taskCount {
+    font-size: 0.875rem;
+    color: #666;
+  }
+  
+  /* Container styles for other tabs */
+  .calendarContainer,
+  .analyticsContainer {
+    padding: 1rem 0;
+  }
+  
+  /* Status badges */
+  .statusBadge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+  
+  .statusCompleted {
+    background-color: #e6f7ef;
+    color: #10b981;
+  }
+  
+  .statusInProgress {
+    background-color: #e6f5ff;
+    color: #0ea5e9;
+  }
+  
+  .statusNotStarted {
+    background-color: #f3f4f6;
+    color: #6b7280;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .dashboardContainer {
+      padding: 1rem;
+    }
+    
+    .statsGrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .tasksContainer {
+      grid-template-columns: 1fr;
+    }
+    
+    .dashboardHeader {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .dashboardTabs {
+      overflow-x: auto;
+      white-space: nowrap;
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .statsGrid {
+      grid-template-columns: 1fr;
+    }
+  }

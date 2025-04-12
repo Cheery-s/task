@@ -1,0 +1,337 @@
+/* Layout Styles */
+.layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .container {
+    display: flex;
+    flex: 1;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 24px;
+    background-color: #f9fafb;
+    overflow-y: auto;
+  }
+  
+  /* Header Styles */
+  .header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0 24px;
+    height: 64px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  .headerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  .logoContainer {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2563eb;
+    text-decoration: none;
+  }
+  
+  .searchContainer {
+    flex: 1;
+    max-width: 500px;
+    margin: 0 24px;
+  }
+  
+  .searchInput {
+    width: 100%;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    background-color: #f9fafb;
+    transition: all 0.2s ease;
+  }
+  
+  .searchInput:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+  }
+  
+  .headerActions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .iconButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+    transition: background-color 0.2s ease;
+  }
+  
+  .iconButton:hover {
+    background-color: #f3f4f6;
+    color: #2563eb;
+  }
+  
+  .notificationBadge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background-color: #ef4444;
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .userDropdown {
+    position: relative;
+  }
+  
+  .userButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .userButton:hover {
+    background-color: #f3f4f6;
+  }
+  
+  .userAvatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+  }
+  
+  .userName {
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+  }
+  
+  .dropdownMenu {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    width: 200px;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    padding: 8px 0;
+    z-index: 20;
+    border: 1px solid #e5e7eb;
+  }
+  
+  .dropdownItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    font-size: 14px;
+    color: #4b5563;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .dropdownItem:hover {
+    background-color: #f3f4f6;
+    color: #2563eb;
+  }
+  
+  .dropdownIcon {
+    font-size: 16px;
+    color: #6b7280;
+  }
+  
+  /* Sidebar Styles */
+  .sidebar {
+    width: 240px;
+    background-color: white;
+    border-right: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 64px);
+    position:-webkit-sticky;
+    position: sticky;
+    top: 64px;
+  }
+  
+  .sidebarHeader {
+    padding: 16px;
+    border-bottom: 1px solid #f3f4f6;
+  }
+  
+  .createButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 16px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .createButton:hover {
+    background-color: #1d4ed8;
+  }
+  
+  .buttonIcon {
+    font-size: 14px;
+  }
+  
+  .sidebarNav {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 0;
+  }
+  
+  .navList {
+    list-style: none;
+    padding: 0;
+  margin: 0;
+}
+
+.navItem {
+  margin-bottom: 2px;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  color: #4b5563;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  margin: 0 8px;
+  transition: all 0.2s ease;
+}
+
+.navLink:hover {
+  background-color: #f3f4f6;
+  color: #2563eb;
+}
+
+.navLink.active {
+  background-color: rgba(37, 99, 235, 0.1);
+  color: #2563eb;
+}
+
+.navIcon {
+  font-size: 16px;
+}
+
+.sidebarFooter {
+  padding: 16px;
+  border-top: 1px solid #f3f4f6;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .searchContainer {
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 64px;
+  }
+  
+  .navLink span, 
+  .createButton span {
+    display: none;
+  }
+  
+  .createButton {
+    padding: 10px;
+  }
+  
+  .buttonIcon {
+    margin: 0;
+  }
+  
+  .navLink {
+    justify-content: center;
+    padding: 10px;
+  }
+  
+  .navIcon {
+    margin: 0;
+  }
+  
+  .content {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    padding: 0 16px;
+  }
+  
+  .searchContainer {
+    display: none;
+  }
+  
+  .userName {
+    display: none;
+  }
+}
