@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import { fetchTasksStart } from '../../redux/slices/taskSlice';
 import TaskItem from './TaskItem';
 import LoadingSpinner from '../commonComponents/LoadingSpinner';
-import './TaskList.css'
+import styles from'./css/TaskList.module.css'
 
 const TaskList =()=> {
     const dispatch = useDispatch();
@@ -14,11 +14,11 @@ const TaskList =()=> {
 const [sortBy, setSortBy] = useState("due_date");
     const [searchTerm, setSearchTerm] = useState("");
     useEffect(()=>{
-        dispatch(fetchTasksStart({filter:filter !== "all" ?filter:null}))
+        dispatch(fetchTasksStart({filter:filter !== "all" ? filter:null}))
     },[dispatch, filter]);
     
     
-    const filteredTasks = tasks.filter(task => 
+    const filteredTasks = tasks.filter((task) => 
         (filter === "all" || task.category === filter)&&
     (searchTerm === "" || 
         task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -38,31 +38,31 @@ const [sortBy, setSortBy] = useState("due_date");
   });
 
   if (error) {
-    return <div className="error-message">Error: {error}</div>;
+    return <div className={styles["error-message"]}>Error: {error}</div>;
   }
     // if (loading) return <p>Loading...</p>;
     //      if (!tasks?.length) return <p>No tasks found</p>;
 
     return (
-        <div className="task-list-container">
-        <div className="task-list-header">
+        <div className={styles["task-list-container"]}>
+        <div className={styles["task-list-header"]}>
           <h2>Your Tasks</h2>
-          <div className="task-list-controls">
-            <div className="search-container">
+          <div className={styles["task-list-controls"]}>
+            <div className={styles["search-container"]}>
               <input
                 type="text"
                 placeholder="Search tasks..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="search-input"
+                className={styles["search-input"]}
               />
             </div>
             
-            <div className="filter-container">
+            <div className={styles["filter-container"]}>
               <select 
                 value={filter} 
                 onChange={(e) => setFilter(e.target.value)}
-                className="filter-select"
+                className={styles["filter-select"]}
               >
                 <option value="all">All Categories</option>
                 <option value="work">Work</option>
@@ -75,7 +75,7 @@ const [sortBy, setSortBy] = useState("due_date");
               <select 
                 value={sortBy} 
                 onChange={(e) => setSortBy(e.target.value)}
-                className="sort-select"
+                className={styles["sort-select"]}
               >
                 <option value="due_date">Due Date</option>
                 <option value="created_at">Creation Date</option>
@@ -84,15 +84,15 @@ const [sortBy, setSortBy] = useState("due_date");
             </div>
           </div>
         </div>
-        <div className='task-list'>
+        <div className={styles["task-list"]}>
         {loading ? (
            <LoadingSpinner />
         ) : sortedTasks.length === 0 ? (
-          <div className="no-tasks">
+          <div className={styles["no-tasks"]}>
             <p>No tasks found. Create your first task!</p>
           </div>
         ) : (
-          <div className="task-grid">
+          <div className={styles["task-grid"]}>
             {sortedTasks.map((task) => (
               <TaskItem key={task.id} task={task} />
             ))}

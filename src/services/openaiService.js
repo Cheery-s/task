@@ -42,6 +42,7 @@ export const generateProductivityInsights = async (tasks) => {
     return response.choices[0].message.content.trim();
   } catch (error) {
     console.error("Error generating insights:", error);
-    throw error;
+    return "Unable to generate insights at this time.";
+    // throw error;
   }
 };

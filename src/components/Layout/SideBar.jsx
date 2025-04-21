@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { NavLink } from "react-router-dom";
 import { 
   FaTasks, 
@@ -11,14 +11,23 @@ import {
   FaCheckCircle,
   FaClock
 } from "react-icons/fa";
+import TaskForm from "../Task/TaskForm";
 import styles from "./css/Layout.module.css";
 // import AnalyticsDashboard from "../Analytics/AnalyticsDashBoard";
 
 const Sidebar = () => {
+  const [showTaskForm, setShowTaskForm] = useState(false);
+  const handleNewTaskClick = () => {
+    setShowTaskForm(true); // Show the TaskForm modal
+  };
+
+  const closeTaskForm = () => {
+    setShowTaskForm(false); // Close the TaskForm modal
+  };
   return (
     <aside className={styles.sidebar}>
       <div className={styles.sidebarHeader}>
-        <button className={styles.createButton}>
+        <button onClick={(handleNewTaskClick)} className={styles.createButton}>
           <FaPlus className={styles.buttonIcon} />
           <span>New Task</span>
         </button>
@@ -43,7 +52,7 @@ const Sidebar = () => {
                 isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
               }
             >
-              <FaInbox className={styles.navIcon} />
+              <FaInbox className={styles.navIcon}/>
               <span>My Tasks</span>
             </NavLink>
           </li>
@@ -119,6 +128,18 @@ const Sidebar = () => {
           <span>Settings</span>
         </NavLink>
       </div>
+
+      {/* Render TaskForm as a modal */}
+      {showTaskForm && (
+        <div className={styles.modal}>
+          <div className={styles.modalContent}>
+            <button onClick={closeTaskForm} className={styles.closeButton}>
+              Close
+            </button>
+            <TaskForm />
+          </div>
+        </div>
+      )}
     </aside>
   );
 };

@@ -21,119 +21,69 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const location = useLocation();
    const [loading, setLoading] = useState(true);
-  //  const [user,setUser] = useState(null);
-    const tasks = useSelector((state) => state.tasks.tasks); // Fetch tasks from Redux store
-  const authUser = useSelector((state) => state.auth.user);
- 
-  // Determine the active tab based on the current route
-  const pathname = location.pathname;
-  // let initialTab = "tasks";
-
-  // Determine the active tab based on the current route
-  const [activeTab, setActiveTab] = useState(() => {
-    if (pathname === "/dashboard") return "tasks"; // Default to tasks for /dashboard
-    if (pathname === "/calendar") return "calendar";
-    if (pathname === "/analytics") return "analytics";
-    if (pathname === "/completed") return "completed";
-    if (pathname === "/upcoming") return "upcoming";
-    return "tasks";
-  });// Default to tasks view");
-  useEffect(() => {
-    if (pathname === "/dashboard") setActiveTab("tasks");
-    else if (pathname === "/calendar") setActiveTab("calendar");
-    else if (pathname === "/analytics") setActiveTab("analytics");
-    else if (pathname === "/completed") setActiveTab("completed");
-    else if (pathname === "/upcoming") setActiveTab("upcoming");
-  }, [pathname]);
-  // if (pathname === "/calendar") initialTab = "calendar";
-  // else if (pathname === "/analytics") initialTab = "analytics";
-  // else if (pathname === "/completed") initialTab = "completed";
-  // else if (pathname === "/upcoming") initialTab = "upcoming";
- 
-  
-  
+  const [user,setUser] = useState(null);
+  const [activeTab, setActiveTab] = useState("tasks"); // Default to tasks view
+  const tasks = useSelector((state) => state.tasks.tasks); // Fetch tasks from Redux store
   console.log("Dashboard rendering, loading state:", loading);
   // Calculate task statistics
-  // const taskStats = {
-  //   total: tasks?.length || 0,
-  //   completed: tasks?.filter(task => task.completed).length || 0,
-  //   upcoming: tasks?.filter(task => !task.completed && new Date(task.due_date) > new Date()).length || 0,
-  //   overdue: tasks?.filter(task => !task.completed && new Date(task.due_date) < new Date()).length || 0,
-  // };
-  // Task statistics
   const taskStats = {
     total: tasks?.length || 0,
-    completed: tasks?.filter((task) => task.completed).length || 0,
-    upcoming: tasks?.filter((task) => !task.completed && new Date(task.due_date) > new Date()).length || 0,
-    overdue: tasks?.filter((task) => !task.completed && new Date(task.due_date) < new Date()).length || 0,
+    completed: tasks?.filter(task => task.status === "completed").length || 0,
+    upcoming: tasks?.filter(task => task.status === "not-started").length || 0,
+    overdue: tasks?.filter(task => 
+      task.status !== "completed" && 
+      new Date(task.dueDate) < new Date()
+    ).length || 0
   };
-  // const taskStats = {
-  //   total: tasks?.length || 0,
-  //   completed: tasks?.filter(task => task.status === "completed").length || 0,
-  //   upcoming: tasks?.filter(task => task.status === "not-started").length || 0,
-  //   overdue: tasks?.filter(task => 
-  //     task.status !== "completed" && 
-  //     new Date(task.dueDate) < new Date()
-  //   ).length || 0
-  // };
   
   //  check authetication on component mount
   useEffect(() => {
-  //   const checkAuth = async () => {
-  //     const {
-  //       data: { user }
-  //     } = await supabase.auth.getUser();
-  //     if (!user) {
-  //       toast.error("You must be logged in to access the dashboard", {
-  //         position: "top-center",
-  //       });
-  //       // setTimeout(console.error("User not Authenticated"), 1000);
-  //       navigate("/"); // Redirect to home if not autheticated
-  //     } else {
-  //       setUser(user)
-  //        setLoading(false);
-  //     }
-  //   };
-  //   checkAuth();
-  //   return () => {
-  //     // Cleanup function to prevent memory leaks
-  //     setUser(null);
-  //     setLoading(true);
-  //   };
-  // }, [navigate]);
-
-  console.log("Dashboard component mounted");
-    // Since ProtectedRoute already handles auth, we can simplify this
-    // setUser(authUser);
-    setLoading(false); // Ensure loading is set to false after setting the user
-    console.log("Dashboard - authUser from Redux:", authUser);
-  }, [authUser, navigate]);
-  //[authUser, navigate]);
+    const checkAuth = async () => {
+      const {
+        data: { user }
+      } = await supabase.auth.getUser();
+      if (!user) {
+        toast.error("You must be logged in to access the dashboard", {
+          position: "top-center",
+        });
+        // setTimeout(console.error("User not Authenticated"), 1000);
+        navigate("/"); // Redirect to home if not autheticated
+      } else {
+        setUser(user)
+         setLoading(false);
+      }
+    };
+    checkAuth();
+    return () => {
+      // Cleanup function to prevent memory leaks
+      setUser(null);
+      setLoading(true);
+    };
+  }, [navigate]);
 
   const handleLogout = async () => {
     try{
     await supabase.auth.signOut();
-
     toast.success("Logged out successfully", { position: "top-center" });
-    navigate("/");
-    }catch (error) {
-      toast.error("Failed to log out. Please try again.", { position: "top-center" });
-      console.error("Logout error:", error);
-    }
+    navigate("/login");
+  }catch(error){
+    toast.error("Failed to log out. Please try again.", { position: "top-center" });
+    console.error("Logout error:", error);
+  }
+
   };
   if (loading){
-    console.log("Dashboard - Loading spinner shown");
      return <LoadingSpinner/>//show loading spinner
     
    }
-   console.log("Dashboard - Rendering content");
+
   return (
     <div className={styles.dashboardContainer}>
         <ToastContainer/>
         <div className={styles.dashboardHeader}>
           <div className={styles.dashboardTitle}>
             <h1>AI Task Manager</h1>
-            <p className={styles.welcomeText}>Welcome,{authUser?.email.split("@")[0] || "User"}</p>
+            <p className={styles.welcomeText}>Welcome,{user?.email.split("@")[0] || "User"}</p>
           </div>
 
           <Button onClick={handleLogout} className={styles.logoutButton}>
@@ -184,7 +134,7 @@ const Dashboard = () => {
 
 
       <div className={styles.dashboardTabs}>
-        <button 
+      <button 
           className={`${styles.tabButton} ${activeTab === 'tasks' ? styles.active : ''}`}
           onClick={() => setActiveTab('tasks')}
         > <FaTasks className={styles.tabIcon} />
@@ -206,7 +156,7 @@ const Dashboard = () => {
       </div>
 
       <div className={styles.dashboardContent}>
-        {(activeTab === "/dashboard" || activeTab === 'tasks') && (
+        {activeTab === 'tasks' && (
           <div className={styles.tasksContainer}>
             <div className={styles.taskFormSection}>
             <h2 className={styles.sectionTitle}>Add New Task</h2>
@@ -219,29 +169,9 @@ const Dashboard = () => {
               <span className={styles.taskCount}>{taskStats.total} tasks</span>
             )}
               </div>
-            <TaskList filter="all"/>
+            <TaskList />
             </div>
             </div>
-        )}
-        {activeTab === "/completed" && (
-          <div className={styles.tasksContainer}>
-            <div className={styles.taskListSection}>
-              <div className={styles.sectionHeader}>
-                <h2 className={styles.sectionTitle}>Completed Tasks</h2>
-              </div>
-              <TaskList filter="completed" />
-            </div>
-          </div>
-        )}
-        {activeTab === "/upcoming" && (
-          <div className={styles.tasksContainer}>
-            <div className={styles.taskListSection}>
-              <div className={styles.sectionHeader}>
-                <h2 className={styles.sectionTitle}>Upcoming Tasks</h2>
-              </div>
-              <TaskList filter="upcoming" />
-            </div>
-          </div>
         )}
         
         {activeTab === 'calendar' && (

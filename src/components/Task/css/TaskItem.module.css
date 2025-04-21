@@ -1,0 +1,184 @@
+/* Task item container */
+.task-item {
+    width: 90%;
+  display: flex;
+    flex-direction: column;
+   gap: 10px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding:  10px;
+    margin: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .task-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  }
+  .task-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Priority classes */
+  .priority-normal {
+    border-left: 4px solid #007bff;
+  }
+  
+  .priority-medium {
+    border-left: 4px solid #ffc107;
+  }
+  
+  .priority-high {
+    border-left: 4px solid #dc3545;
+  }
+  
+  .priority-overdue {
+    border-left: 4px solid #ff0000;
+  }
+  
+  /* Completed task */
+  .task-completed {
+    opacity: 0.7;
+    text-decoration: line-through;
+  }
+  
+  /* Task category */
+  .task-category {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555555;
+    margin-bottom: 10px;
+  }
+  
+  /* Task title */
+  .task-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 10px;
+  }
+  
+  /* Task description */
+  .task-description {
+    font-size: 16px;
+    color: #666666;
+    margin-bottom: 15px;
+  }
+  
+  /* Task metadata */
+  .task-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .task-due-date {
+    font-size: 14px;
+    color: #555555;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .days-remaining {
+    font-size: 14px;
+    color: #28a745;
+    margin-left: 10px;
+  }
+  
+  .days-overdue {
+    font-size: 14px;
+    color: #dc3545;
+    margin-left: 10px;
+  }
+  
+  /* Completed badge */
+  .task-completed-badge {
+    font-size: 14px;
+    color: #28a745;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  /* Task actions */
+  .task-actions {
+    display: flex;
+    gap: 1px;
+    margin-top: 10px;
+  }
+  
+  .action-button {
+   
+    padding: 12px;
+    font-size: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .complete-button {
+    background-color: #28a745;
+    color: #ffffff;
+  }
+  
+  .complete-button:hover {
+    background-color: #218838;
+  }
+  
+  .edit-button {
+    background-color: #007bff;
+    color: #ffffff;
+  }
+  
+  .edit-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .share-button {
+    background-color: #17a2b8;
+    color: #ffffff;
+  }
+  
+  .share-button:hover {
+    background-color: #117a8b;
+  }
+  
+  .delete-button {
+    background-color: #dc3545;
+    color: #ffffff;
+  }
+  
+  .delete-button:hover {
+    background-color: #c82333;
+  }
+  
+  /* Share modal */
+  .share-modal {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  .share-modal input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .share-modal button {
+    margin: 5px;
+  }

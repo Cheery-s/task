@@ -6,7 +6,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import { FaTasks } from "react-icons/fa";
 const localizer = momentLocalizer(moment);
 
-const CalendarView = ({ tasks }) => {
+const CalendarView = ({ tasks =[]}) => {
     const [selectedEvent, setSelectedEvent] = useState(null); 
   const events = tasks.map((task) => ({
     id: task.id,

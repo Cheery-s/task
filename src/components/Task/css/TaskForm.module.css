@@ -1,0 +1,126 @@
+/* Container for the task form */
+.taskFormContainer {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Form title */
+  .taskFormContainer h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333333;
+    text-align: center;
+  }
+  
+  /* AI Assistant Section */
+  .aiAssistant {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .aiInput {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  
+  .aiButton {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .aiButton:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  .aiButton:hover:not(:disabled) {
+    background-color: #0056b3;
+  }
+  
+  /* Form styles */
+  .taskForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .formGroup label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #555555;
+  }
+  
+  .formGroup input,
+  .formGroup textarea,
+  .formGroup select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  .formGroup textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  .formGroup input:focus,
+  .formGroup textarea:focus,
+  .formGroup select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Form row for grouping fields */
+  .formRow {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .formRow .formGroup {
+    flex: 1;
+  }
+  
+  /* Submit button */
+  button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  button[type="submit"]:hover:not(:disabled) {
+    background-color: #218838;
+  }

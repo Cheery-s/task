@@ -6,6 +6,7 @@ const Button = ({ children, onClick, disabled}) => {
     <button
       onClick={onClick}
       disabled={disabled}
+      
       style={{
         padding: "10px",
         margin: "5px",
@@ -25,9 +26,11 @@ Button.propTypes ={
     children:PropTypes.node.isRequired,
     onClick:PropTypes.func,
     disabled:PropTypes.bool,
+   
 };
 Button.defaultProps ={
     onClick:()=>{},
     disabled:false,
+   
 };
 export default Button;

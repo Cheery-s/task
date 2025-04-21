@@ -7,10 +7,10 @@ import { generateProductivityInsights } from "../../services/openaiService";
 import { BarChart, Bar,PieChart,Pie, XAxis, YAxis,CartesianGrid, Tooltip, Legend,Cell,ResponsiveContainer } from "recharts";
 import LoadingSpinner from "../commonComponents/LoadingSpinner";
 
-const AnalyticsDashboard = ({ tasks }) => {
+const AnalyticsDashboard = ({ tasks = [] }) => {
     const [insights, setInsights] = useState("");
     const [loading, setLoading] = useState(true);
-
+    console.log("AnalyticsDashboard - tasks:", tasks);
   useEffect(() => {
     const fetchInsights = async () => {
       try{const insights = await generateProductivityInsights(tasks);

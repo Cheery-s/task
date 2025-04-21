@@ -62,7 +62,7 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.headerContainer}>
         <div className={styles.logoContainer}>
-          <Link to="/dashboard" className={styles.logo}>
+          <Link to="/" className={styles.logo}>
             AI Task Manager
           </Link>
         </div>
